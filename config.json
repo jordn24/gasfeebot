@@ -1,3 +1,4 @@
 {
-    "prefix": "!"
+    "prefix": "!",
+    "interval": 600000
 }

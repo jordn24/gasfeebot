@@ -2,7 +2,7 @@ const axios = require('axios')
 const discord = require('discord.js')
 const { MessageEmbed } = require('discord.js');
 
-const { prefix } = require('./config.json');
+const { prefix, interval } = require('./config.json');
 const { token } = require('./api_keys.json');
 
 const client = new discord.Client();
@@ -38,7 +38,7 @@ client.on('ready', () => {
                     });
             } 
         })
-    }, 60000);
+    }, interval);
 });
 
 client.on('message', async message => {
