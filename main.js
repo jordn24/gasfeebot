@@ -56,17 +56,17 @@ client.on('message', async message => {
                     { name: 'Fast: (transaction completes in < 2 minutes)', value: `$${prices.high} USD` }
                 )
 
-            message.channel.send(gasFeeEmbed)
-        //     message.guild.me
-        //         .setNickname(`$${prices.high} USD`)
-        //         .then(() => {
-        //             console.log(`You are now ${prices.high}!`);
-        //         })
-        //         .catch(err => {
-        //             console.log(err);
-        //         });
+            // message.channel.send(gasFeeEmbed)
+            // message.guild.me
+            //     .setNickname(`$${prices.high} USD`)
+            //     .then(() => {
+            //         console.log(`You are now ${prices.high}!`);
+            //     })
+            //     .catch(err => {
+            //         console.log(err);
+            //     });
 
-        // }).catch(console.log)
+        }).catch(console.log)
     }
 
 });
