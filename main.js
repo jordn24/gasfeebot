@@ -22,51 +22,51 @@ async function getCurrentGasPrices() {
 }
 
 
-client.on('ready', () => {
-    setInterval(() => {
-        getCurrentGasPrices().then((prices) => {
-            const Guilds = client.guilds.cache.map(guild => guild);
-            for (var i = 0; i < Guilds.length; i++){
-                console.log(`${prices.high}`)
-                Guilds[i].me
-                        .setNickname(`$${prices.high} USD`)
-                    .then( () => {
-                        console.log(`You are now ${prices.high}!`);
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
-            } 
-        })
-    }, interval);
-});
+// client.on('ready', () => {
+//     setInterval(() => {
+//         getCurrentGasPrices().then((prices) => {
+//             const Guilds = client.guilds.cache.map(guild => guild);
+//             for (var i = 0; i < Guilds.length; i++){
+//                 console.log(`${prices.high}`)
+//                 Guilds[i].me
+//                         .setNickname(`$${prices.high} USD`)
+//                     .then( () => {
+//                         console.log(`You are now ${prices.high}!`);
+//                     })
+//                     .catch(err => {
+//                         console.log(err);
+//                     });
+//             } 
+//         })
+//     }, interval);
+// });
 
 client.on('message', async message => {
 
 
-    if (message.content.toLowerCase().includes(prefix + 'gas')){
+    if (message.content.toLowerCase().includes(prefix + 'gas')) {
         getCurrentGasPrices().then((prices) => {
 
             const gasFeeEmbed = new MessageEmbed()
-            .setColor('#0099ff')
-            .setTitle(`Current ETH Gas Prices :`)
-            .addFields(
-                { name: 'Low: (transaction completes in < 30 minutes)', value: `$${prices.low} USD`},
-                { name: 'Standard: (transaction completes in < 5 minutes)', value: `$${prices.medium} USD`},
-                { name: 'Fast: (transaction completes in < 2 minutes)', value: `$${prices.high} USD`}
-            )
-        
-            message.channel.send(gasFeeEmbed)
-            message.guild.me
-                .setNickname(`$${prices.high} USD`)
-                .then( () => {
-                    console.log(`You are now ${prices.high}!`);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
+                .setColor('#0099ff')
+                .setTitle(`Current ETH Gas Prices :`)
+                .addFields(
+                    { name: 'Low: (transaction completes in < 30 minutes)', value: `$${prices.low} USD` },
+                    { name: 'Standard: (transaction completes in < 5 minutes)', value: `$${prices.medium} USD` },
+                    { name: 'Fast: (transaction completes in < 2 minutes)', value: `$${prices.high} USD` }
+                )
 
-        }).catch(console.log)
+            message.channel.send(gasFeeEmbed)
+        //     message.guild.me
+        //         .setNickname(`$${prices.high} USD`)
+        //         .then(() => {
+        //             console.log(`You are now ${prices.high}!`);
+        //         })
+        //         .catch(err => {
+        //             console.log(err);
+        //         });
+
+        // }).catch(console.log)
     }
 
 });
